@@ -6,6 +6,16 @@ global $password;
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
+
+    // Set session variables
+    $_SESSION["username"] = $username;
+    $_SESSION["password"] = $password;
+    print_r($_SESSION);
+    if (isset($_SESSION)) {
+        header("Location: dashboard.php");
+    } else {
+        header("Location: login.php");
+    }
 }
 
 echo $username;
@@ -13,7 +23,7 @@ echo $password;
 
 $servername = 'localhost:3306';
 $user = 'root';
-$pass = 'adil123';
+$pass = 'Badshahboy123456';
 $dbName = 'users';
 
 // Connection Establishment
@@ -22,16 +32,13 @@ $conn = mysqli_connect($servername, $user, $pass, $dbName);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-echo "Connected successfully";
+// echo "Connected successfully";
 
 ////////////////////////////////////////////////
-//Inserting username and password into users database
-
-
 mysqli_close($conn);
 
-
 ?>
+
 
 
 
