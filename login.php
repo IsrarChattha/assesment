@@ -1,23 +1,34 @@
 <?php
+
+global $username;
+global $password;
+
 if (isset($_POST['submit'])) {
-    echo $_POST['username'];
-    echo $_POST['password'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 }
 
-$servername = 'localhost:3306';
-$username = 'root';
-$password = 'adil123';
+echo $username;
+echo $password;
 
-//cpnnection
-$conn = mysqli_connect($servername, $username, $password);
+$servername = 'localhost:3306';
+$user = 'root';
+$pass = 'adil123';
+$dbName = 'users';
+
+// Connection Establishment
+$conn = mysqli_connect($servername, $user, $pass, $dbName);
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 echo "Connected successfully";
 
+////////////////////////////////////////////////
+//Inserting username and password into users database
 
 
+mysqli_close($conn);
 
 
 ?>
@@ -36,7 +47,7 @@ echo "Connected successfully";
 
 <body>
     <div class="container">
-        <form action="login.php" method="POST">
+        <form id="loginForm" action="login.php" method="POST">
             <div class="row">
                 <div class="col-md-6">
                     <label">Username</label>
@@ -50,6 +61,12 @@ echo "Connected successfully";
             <input type="submit" name="submit" value="Submit" class="btn btn-primary">
         </form>
     </div>
+    <script>
+        $("#loginForm").ajaxSubmit({
+            url: 'login.php',
+            type: 'POST'
+        })
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 
