@@ -2,10 +2,14 @@
 
 session_start();
 
+
 include 'login.php';
 
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
 
 <?php include 'template/header.php' ?>
 
@@ -22,6 +26,7 @@ include 'login.php';
         <!-- submit button -->
         <input type="submit" name="submit" value="Submit" id="btn-submit">
     </form>
+
 </body>
 
 </html>

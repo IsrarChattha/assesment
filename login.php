@@ -20,6 +20,7 @@ if (isset($_POST['submit'])) {
     if (empty($_POST['username'])) {
         $errors['username'] = 'username is required';
     } else {
+
         $username = $_POST['username'];
         //alphanumeric check using regex
         if (!preg_match('/^[a-zA-Z]+[a-zA-Z0-9._]+$/', $username)) {
@@ -31,6 +32,7 @@ if (isset($_POST['submit'])) {
     if (empty($_POST['password'])) {
         $errors['password'] = 'password is required';
     } else {
+
         $password = $_POST['password'];
         //alphabtes and numbers check for psswords using regex
         if (!preg_match('/^[a-zA-Z]+[a-zA-Z0-9._]+$/', $password)) {
@@ -58,7 +60,7 @@ if (isset($_POST['submit'])) {
             if ($user['username'] === $username && $user['password'] === $password) {
                 echo 'access granted';
                 //setting up a SESSION for the authentic user
-                $_SESSION['username'] = $username;
+                $_SESSION['username'] = $_POST['username'];
             }
         }
 
