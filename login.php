@@ -64,6 +64,7 @@ if (isset($_POST['submit'])) {
             }
         }
 
+        // directing user to the dashboard.php if SESSION is set
         if (isset($_SESSION['username'])) {
             header('Location: dashboard.php');
         } else {

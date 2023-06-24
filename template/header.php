@@ -22,4 +22,18 @@
         }
     </style>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+    <script src="https://malsup.github.io/jquery.form.js"></script>
+
+    <script>
+        // wait for the DOM to be loaded 
+        $(document).ready(function() {
+            // bind 'myForm' and provide a simple callback function 
+            $('#myForm').ajaxSubmit({
+                url: 'login.php',
+                type: "POST"
+            });
+        });
+    </script>
+
 </head>

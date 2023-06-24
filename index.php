@@ -15,7 +15,7 @@ include 'login.php';
 
 <body>
     <h1>Home Page</h1>
-    <form action="index.php" method="POST">
+    <form action="index.php" method="POST" id="myForm">
         <label>Username</label>
         <input type="text" name="username">
         <div id="redColor"><?php echo htmlspecialchars($errors['username']); ?></div>
