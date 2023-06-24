@@ -1,6 +1,8 @@
 <?php
 session_start();
+include 'login.php';
 ?>
+
 <?php
 $name = $_SESSION['username'] ?? 'Guest';
 
