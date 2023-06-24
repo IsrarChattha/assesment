@@ -47,15 +47,25 @@ if (isset($_POST['submit'])) {
         //fetch result from the wuery
         $result = mysqli_query($conn, $myQuery);
         // collecting all the users as a row in associative array
-        $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $myusers = mysqli_fetch_all($result, MYSQLI_ASSOC);
         //free result from the memory
         mysqli_free_result($result);
 
+
         //now looping through each user to match the input value and database value
-        foreach ($users as $user) {
+        foreach ($myusers as $user) {
+
             if ($user['username'] === $username && $user['password'] === $password) {
                 echo 'access granted';
+                //setting up a SESSION for the authentic user
+                $_SESSION['username'] = $username;
             }
+        }
+
+        if (isset($_SESSION['username'])) {
+            header('Location: dashboard.php');
+        } else {
+            header('Location: index.php');
         }
 
         mysqli_close($conn);
